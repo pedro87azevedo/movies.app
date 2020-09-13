@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from "ngx-toastr"
 
+import { NavigationModule } from "./modules/navigation/navigation.module"
 import { AppComponent } from './app.component';
 import { from } from 'rxjs';
 
@@ -15,7 +16,8 @@ import { from } from 'rxjs';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NavigationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
