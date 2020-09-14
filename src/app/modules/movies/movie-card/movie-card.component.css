@@ -1,0 +1,11 @@
+.actor-image {
+    background-size: cover;
+}
+
+.moviesPoster-image {
+    height: 400px;
+}
+
+.content {
+    width: 200px;
+}

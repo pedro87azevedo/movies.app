@@ -8,5 +8,5 @@ export interface Filme {
     sinopse?: String
     ano?: Number
     maior18?: Boolean
-    filmes?: Filme[]
+    ator?: Ator
 }
