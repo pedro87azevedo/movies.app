@@ -8,12 +8,14 @@ import { ToastrModule } from "ngx-toastr"
 import { NavigationModule } from "./modules/navigation/navigation.module"
 import { AppRoutingModule } from "./app-routing.module"
 import { AppComponent } from './app.component';
+import { MovieDetailComponent } from './modules/movies/movie-detail/movie-detail.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
