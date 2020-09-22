@@ -4,7 +4,8 @@
       <mat-card-title>{{Filme.ator.nome}}</mat-card-title>
       <mat-card-subtitle>{{Filme.genero}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [routerLink]="['/movies/detail', Filme.nome]" class="moviePoster-image routerLinkMovie" [src]="Filme.imagem" alt="Photo of a {{Filme.nome}}">
+    <img mat-card-image [routerLink]="['/movies/detail', Filme.nome]" class="moviePoster-image routerLinkMovie" 
+    [src]="Filme.imagem" alt="Photo of a {{Filme.nome}}">
     <mat-card-content>
         <span [routerLink]="['/movies/detail', Filme.nome]" class="mat-h2 routerLinkMovie">{{Filme.nome}}</span> 
         <p>

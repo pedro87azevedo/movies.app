@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Filme } from './../models/filme.model';
 import { API_URL } from './../api';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +12,11 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   findAllMovies(): Observable<HttpResponse<Filme[]>>{
-    return this.http.get<Filme[]>(`${API_URL}/filmes/listarTodos`, {observe: 'response'})
+    return this.http.get<Filme[]>(`${API_URL}/filmes/listarTodos`, { observe: 'response' })
   }
+
+  findMovieByName(movieName: String): Observable<HttpResponse<Filme>>{
+    return this.http.get<Filme>(`${API_URL}/filmes/listarUm/${movieName}`, { observe: 'response'})
+  } 
 
 }

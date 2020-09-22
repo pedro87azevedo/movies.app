@@ -5,9 +5,6 @@ export interface Ator {
     nome: String
     imagem?: String
     idade?: Number
-    localidade?: String
-    estado?: String
-    cep?: Number
     filmes?: Filme[]
 
 }
