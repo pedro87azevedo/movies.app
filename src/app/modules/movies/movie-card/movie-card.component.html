@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z4">
     <mat-card-header *ngIf="Filme.ator">
-      <img mat-card-avatar class="actor-image" [src]="Filme.ator.imagem">
+      <img mat-card-avatar class="actor-image" [src]="Filme.ator.imagem" onError="this.src='./../../../../assets/user.png'">
       <mat-card-title>{{Filme.ator.nome}}</mat-card-title>
       <mat-card-subtitle>{{Filme.genero}}</mat-card-subtitle>
     </mat-card-header>

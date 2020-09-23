@@ -13,10 +13,9 @@ export class MovieCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.Filme)
   }
 
-  sliceSnyposis(value: String): String{
+  sliceSnyposis(value: String): String {
     return `${value.slice(0, 100)}...`
   }
 

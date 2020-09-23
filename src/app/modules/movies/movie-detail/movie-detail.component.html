@@ -7,7 +7,7 @@ fxLayoutAlign.gt-sm="center start" fxLayoutGap="16px">
         </mat-card>
         <mat-card class="mat-elevation-z3">
             <mat-card-header>
-                <img mat-card-avatar class="actorImage" [src]="Filme.ator.imagem"
+                <img mat-card-avatar class="actorImage" [src]="Filme.ator.imagem" onError="this.src='./../../../../assets/user.png'"
                     alt="Photo of a {{Filme.ator.nome}}">
                 <div class="actorName">{{Filme.ator.nome}}</div>
             </mat-card-header>
@@ -25,8 +25,7 @@ fxLayoutAlign.gt-sm="center start" fxLayoutGap="16px">
             </div>
             <div *ngIf="Filme.classificacaoIndicativa || Filme.duracao" class="row">
                 <span *ngIf="Filme.classificacaoIndicativa" class="movieInfo"><b class="movieInfoBold">
-                        Classificação Indicativa: </b> {{Filme.classificacaoIndicativa}}</span>
-                &nbsp;
+                        Classificação Indicativa: </b> {{Filme.classificacaoIndicativa}} &nbsp;</span>                
                 <span *ngIf="Filme.duracao" class="movieInfo"><b class="movieInfoBold">Duração do filme:
                     </b>{{Filme.duracao}}</span>
             </div>

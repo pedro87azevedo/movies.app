@@ -1,1 +1,79 @@
-<p>new-movie works!</p>
+<h2 mat-dialog-title>Adicionar um filme</h2>
+<mat-horizontal-stepper linear="true" #stepper>
+    <mat-step [stepControl]="actorFormGroup" editable="false">
+        <ng-template matStepLabel>{{stepActorLabel}}</ng-template>
+        <form *ngIf="!isNewActor" [formGroup]="actorFormGroup" class="form">
+            <mat-form-field class="form-element">
+                <mat-label>Selecione um ator</mat-label>
+                <mat-select formControlName="ator" required>
+                    <mat-option *ngFor="let ator of atores" [value]="ator">{{ator.nome}}</mat-option>
+                </mat-select>
+                <mat-hint class="select-actor" (click)="newActor()">Não encontrou o ator desejado? Adicione um
+                    agora</mat-hint>
+            </mat-form-field>
+        </form>
+        <form *ngIf="isNewActor" [formGroup]="actorFormGroup" class="form">
+            <div class="form-element">
+                <span class="select-actor" (click)="selectActor()">Quero voltar e escolher um ator</span>
+            </div>
+            <mat-form-field class="form-element">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" placeholder="Nome" required>
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Imagem</mat-label>
+                <input matInput formControlName="imagem" placeholder="Link da imagem">
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Biografia</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" formControlName="biografia" placeholder="Biografia"></textarea>
+            </mat-form-field>
+        </form>
+        <div class="form-element">
+            <button class="button" color="primary" mat-button (click)="nextStep()" matStepperNext
+                [disabled]="actorFormGroup.invalid">Próximo</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="movieFormGroup" editable="false">
+        <form [formGroup]="movieFormGroup" class="form">
+            <ng-template matStepLabel>Filme</ng-template>
+            <mat-form-field class="form-element">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" placeholder="Nome" required>
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Genero</mat-label>
+                <input matInput formControlName="genero" placeholder="Genero" required>
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Imagem</mat-label>
+                <input matInput formControlName="imagem" placeholder="Link da imagem" required>
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Sinopse</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" formControlName="sinopse" placeholder="Sinopse" required></textarea>
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Classificação indicativa</mat-label>
+                <input matInput formControlName="classificacaoIndicativa" placeholder="Classificação indicativa">
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Duração</mat-label>
+                <input matInput formControlName="duracao" placeholder="Duração">
+            </mat-form-field>
+            <mat-form-field class="form-element">
+                <mat-label>Data de lançamento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dataLancamento">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="form-element">
+                <button class="button" color="primary" mat-button [mat-dialog-close]="true"
+                    [disabled]="movieFormGroup.invalid" (click)="createNewMovie()">Adicionar filme</button>
+            </div>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>
+<div class="form-element">
+    <button mat-button class="button" color="warn" [mat-dialog-close]="false">Fechar</button>
+</div>
