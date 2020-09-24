@@ -2,11 +2,13 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { CdkTextareaAutosize } from "@angular/cdk/text-field"
 import { MatDialogRef } from"@angular/material/dialog"
-import { from, Subscription } from "rxjs"
+import { Subscription } from "rxjs"
 import { Ator } from "./../../../core/models/ator.model"
 import { ActorsService } from "./../../../core/services/actors.service"
 import { MyToastrService } from "./../../../core/services/toastr.service"
 import { MoviesService } from "./../../../core/services/movies.service"
+import { ActorValidator} from "./../../../core/validators/ator.validator"
+import { MovieValidator } from "./../../../core/validators/filme.validator"
 import * as moment from "moment"
 
 @Component({
@@ -31,7 +33,9 @@ export class NewMovieComponent implements OnInit, OnDestroy {
     private builder: FormBuilder,
     private toastr: MyToastrService,
     private moviesService: MoviesService,
-    private dialogRef: MatDialogRef<NewMovieComponent>
+    private dialogRef: MatDialogRef<NewMovieComponent>,
+    private actorValidator: ActorValidator,
+    private movieValidator: MovieValidator 
   ) { }
 
   ngOnInit(): void {
@@ -60,7 +64,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
 
   initializeNewActorFormGroup(): void {
     this.actorFormGroup = this.builder.group({
-      nome: this.builder.control(null, [Validators.required]),
+      nome: this.builder.control(null, [Validators.required], this.actorValidator.validatorUniqueActorName() ),
       imagem: this.builder.control(null),
       biografia: this.builder.control(null)
     })
@@ -68,7 +72,7 @@ export class NewMovieComponent implements OnInit, OnDestroy {
 
   initializeMovieFormGroup(): void {
     this.movieFormGroup = this.builder.group({
-      nome: this.builder.control(null, [Validators.required]),
+      nome: this.builder.control(null, [Validators.required], this.movieValidator.validatorUniqueMoviesName()),
       genero: this.builder.control(null, [Validators.required]),
       imagem: this.builder.control(null, [Validators.required]),
       sinopse: this.builder.control(null, [Validators.required]),
@@ -129,6 +133,14 @@ export class NewMovieComponent implements OnInit, OnDestroy {
       let dateFormatted: string = moment.utc(value).local().format('YYYY-MM-DD')
       this.movieFormGroup.controls['dataLancamento'].setValue(dateFormatted)
     }
+  }
+
+  actorNameExists(): boolean {
+    return this.actorFormGroup.get('nome').hasError('actorNameExists')
+  }
+
+  movieNameExists(): boolean {
+    return this.movieFormGroup.get('nome').hasError('movieNameExists')
   }
 
 }

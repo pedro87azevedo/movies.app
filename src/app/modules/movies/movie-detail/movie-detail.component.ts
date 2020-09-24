@@ -13,6 +13,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy{
 
   private httpRequest: Subscription
   Filme: Filme
+  hasError: boolean = false
 
   constructor(
     private activatedRout: ActivatedRoute,
@@ -30,9 +31,9 @@ export class MovieDetailComponent implements OnInit, OnDestroy{
 
   findMovieByName(movieName: String): void {
     this.httpRequest = this.moviesService.findMovieByName(movieName).subscribe(response => {
-      this.Filme = response.body['data']
+      this.Filme = response.body['data']      
       }, err => {
-        console.log(err)
+        this.hasError = true
       })
   }
 
