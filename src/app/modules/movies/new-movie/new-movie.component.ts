@@ -50,7 +50,8 @@ export class NewMovieComponent implements OnInit, OnDestroy {
 
   findAllActors(): void {
     this.httpRequest = this.actorsService.findAllActors().subscribe(response => {
-      this.atores = response.body['data']
+      this.atores = response.body['atores']
+      console.log(this.atores)
     }, err => {
       console.log(err.error['message'])
     })

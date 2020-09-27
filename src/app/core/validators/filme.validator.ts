@@ -14,19 +14,19 @@ export class MovieValidator {
 
     validatorUniqueMoviesName(): AsyncValidatorFn {
         return control => control.valueChanges
-        .pipe(
-            debounceTime(400),
-            distinctUntilChanged(),
-            switchMap(value => this.moviesService.validatorUniqueMovieName(value)),
-            map((response) => {
-                if(response['data'] == 0 && control.value != null && control.value != '' ){
-                    return null
-                }else {
-                    return {'movieNameAlreadyExists': true}
-                }
-            }),
-            first()
-        )
+            .pipe(
+                debounceTime(400),
+                distinctUntilChanged(),
+                switchMap(value => this.moviesService.validatorUniqueMovieName(value)),
+                map((response) => {
+                    if(response['data'] == 0 && control.value != null && control.value != '' ){
+                        return null
+                    }else {
+                        return {'movieNameAlreadyExists': true}
+                    }
+                }),
+                first()
+            )
     }
 
 }

@@ -31,7 +31,8 @@ export class MovieDetailComponent implements OnInit, OnDestroy{
 
   findMovieByName(movieName: String): void {
     this.httpRequest = this.moviesService.findMovieByName(movieName).subscribe(response => {
-      this.Filme = response.body['data']      
+      this.Filme = response.body['data'] 
+      console.log(this.Filme)     
       }, err => {
         this.hasError = true
       })
