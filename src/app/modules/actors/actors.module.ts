@@ -13,12 +13,12 @@ import { MatSelectModule } from "@angular/material/select"
 import { MatDatepickerModule } from "@angular/material/datepicker"
 import { MatNativeDateModule } from "@angular/material/core"
 
-import { MoviesRoutingModule } from './movies-routing.module';
-import { MoviesComponent } from './movies.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
-import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { ActorsRoutingModule } from './actors-routing.module';
+import { ActorsComponent } from './actors.component';
+import { ActorCardComponent } from './actor-card/actor-card.component';
+import { ActorDetailComponent } from './actor-detail/actor-detail.component';
 import { ComponentsModule } from "./../../components/components.module";
-import { NewActorComponent } from './new-movie/new-actor.component'
+import { NewActorComponent } from './new-actor/new-actor.component'
 
 
 @NgModule({
