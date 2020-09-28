@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from "rxjs"
 import { Ator } from "./../../core/models/ator.model"
-import { ActorsService } from "./../../core/services/movies.service"
+import { ActorsService } from "./../../core/services/actors.service"
 import { MatDialog } from "@angular/material/dialog"
-import { NewActorComponent } from "./new-movie/new-actor.component"
+import { NewActorComponent } from "./new-actor/new-actor.component"
 
 @Component({
   selector: 'app-actor',
@@ -29,15 +29,15 @@ export class ActorsComponent implements OnInit, OnDestroy {
     this.httpRequest.unsubscribe()
   }
 
-  findAllMovies(): void {
-    this.httpRequest = this.actorsService.findAllMovies().subscribe(response => {
+  findAllActors(): void {
+    this.httpRequest = this.actorsService.findAllActors().subscribe(response => {
       this.Atores = response.body['data']
     }, err => {
       this.hasError = true
     })
   }
 
-  openNewMovieModal(): void {
+  openNewActorModal(): void {
     const dialogRef = this.dialog.open(NewActorComponent, {
       width: '600px',
       height: '600px',

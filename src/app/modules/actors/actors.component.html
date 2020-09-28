@@ -5,6 +5,6 @@
         <button mat-flat-button color="primary" (click)="openNewActorModal()">Adicionar ator</button>
     </div>
     <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let ator of Atores">
-        <app-movie-card [Filme]="ator"></app-actors-card>
+        <app-actor-card [Ator]="ator"></app-actor-card>
     </div>
 </div>

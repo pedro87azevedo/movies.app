@@ -25,6 +25,10 @@ export class ActorsService {
   validatorUniqueActorName(actorName: string){
     let myParams = new HttpParams()
     myParams = myParams.append('nome', actorName)
-    return this.http.get<any>(`${API_URL}/ator/validarNomeAtor`, {params: myParams})
+    return this.http.get<any>(`${API_URL}/atores/validarNomeAtor`, {params: myParams})
+  }
+
+  findActorByName(actorName: String): Observable<HttpResponse<Ator>> {
+    return this.http.get<Ator>(`${API_URL}/atores/listarUm/${actorName}`, { observe: 'response' })
   }
 }

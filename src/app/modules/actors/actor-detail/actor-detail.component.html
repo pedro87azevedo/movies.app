@@ -1,0 +1,32 @@
+<app-loading *ngIf="!Ator && !hasError"></app-loading>
+<app-error *ngIf="!Ator && hasError"></app-error>
+<div *ngIf="Ator && !hasError" class="content" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center" 
+fxLayoutAlign.gt-sm="center start" fxLayoutGap="16px">
+    <div fxFlex="50%" fxFlex.gt-sm="25%">
+        <mat-card class="mat-elevation-z0">
+            <img mat-card-image class="movieCover" [src]="Ator.imagem" alt="Photo of a {{Ator.nome}}">
+        </mat-card>
+        <mat-card class="mat-elevation-z3">
+            <mat-card-header>
+                <img mat-card-avatar class="actorImage" [src]="Ator.filmes" onError="this.src='./../../../../assets/user.png'" alt="Photo of a {{Ator.filmes}}">
+                <div class="actorName">{{Ator.filmes}}</div>
+            </mat-card-header>
+        </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.gt-sm="75%">
+        <mat-card class="mat-elevation-z0">
+            <div class="row">
+                <span class="mat-display-1 uppercase-text">{{Ator.nome}}</span>
+                <br>
+                <span class="movieInfo">{{Ator.nacionalidade}}</span>
+                <br>
+                <span *ngIf="Ator.data_nascimento" class="movieInfo">Nascido em
+                    {{Ator.data_nascimento | date: 'dd/MM/yyyy'}}</span>
+                <span class="movieInfo">{{Ator.idade}}</span>                
+            </div>           
+            <div class="row">
+                <p class="movieSynopsis">{{Ator.biografia}}</p>
+            </div>
+        </mat-card>
+    </div>
+</div>

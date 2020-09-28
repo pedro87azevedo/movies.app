@@ -19,7 +19,7 @@ export class ActorValidator {
                 distinctUntilChanged(),
                 switchMap(value => this.actorsService.validatorUniqueActorName(value)),
                 map((response) => {
-                    if(response['data'] == 0 && control.value != null && control.value != '' ){
+                    if(response['atores'] == 0 && control.value != null && control.value != '' ){
                         return null
                     }else {
                         return {'actorNameAlreadyExists': true}

@@ -9,5 +9,5 @@ export interface Filme {
     duracao?: String,
     imagem: String,
     sinopse: String,
-    ator?: Ator
+    ator: Ator
 }
