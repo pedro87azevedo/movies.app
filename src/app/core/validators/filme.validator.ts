@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core"
-import {AsyncValidatorFn} from "@angular/forms"
-import {map, debounceTime, distinctUntilChanged, switchMap, first} from "rxjs/operators"
-import {MoviesService} from "./../services/movies.service"
+import { Injectable } from "@angular/core"
+import { AsyncValidatorFn } from "@angular/forms"
+import { map, debounceTime, distinctUntilChanged, switchMap, first } from "rxjs/operators"
+import { MoviesService } from "./../services/movies.service"
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,7 @@ export class MovieValidator {
 
     constructor(
         private moviesService: MoviesService
-    ){ }
+    ) { }
 
     validatorUniqueMoviesName(): AsyncValidatorFn {
         return control => control.valueChanges
@@ -19,10 +19,10 @@ export class MovieValidator {
                 distinctUntilChanged(),
                 switchMap(value => this.moviesService.validatorUniqueMovieName(value)),
                 map((response) => {
-                    if(response['data'] == 0 && control.value != null && control.value != '' ){
+                    if (response['data'] == 0 && control.value != null && control.value != '') {
                         return null
-                    }else {
-                        return {'movieNameAlreadyExists': true}
+                    } else {
+                        return { 'movieNameAlreadyExists': true }
                     }
                 }),
                 first()
