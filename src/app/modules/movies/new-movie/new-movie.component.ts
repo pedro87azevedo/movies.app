@@ -51,7 +51,6 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   findAllActors(): void {
     this.httpRequest = this.actorsService.findAllActors().subscribe(response => {
       this.atores = response.body['atores']
-      console.log(this.atores)
     }, err => {
       console.log(err.error['message'])
     })
@@ -137,11 +136,11 @@ export class NewMovieComponent implements OnInit, OnDestroy {
   }
 
   actorNameExists(): boolean {
-    return this.actorFormGroup.get('nome').hasError('actorNameExists')
+    return this.actorFormGroup.get('nome').hasError('actorNameAlreadyExists')
   }
 
   movieNameExists(): boolean {
-    return this.movieFormGroup.get('nome').hasError('movieNameExists')
+    return this.movieFormGroup.get('nome').hasError('movieNameAlreadyExists')
   }
 
 }
