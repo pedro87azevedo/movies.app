@@ -31,7 +31,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
 
   findAllActors(): void {
     this.httpRequest = this.actorsService.findAllActors().subscribe(response => {
-      this.Atores = response.body['data']
+      this.Atores = response.body['atores']
     }, err => {
       this.hasError = true
     })
