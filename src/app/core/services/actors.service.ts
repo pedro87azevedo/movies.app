@@ -29,6 +29,6 @@ export class ActorsService {
   }
 
   findActorByName(actorName: String): Observable<HttpResponse<Ator>> {
-    return this.http.get<Ator>(`${API_URL}/atores/listarUm/${actorName}`, { observe: 'response' })
+    return this.http.get<Ator>(`${API_URL}/atores/visualizarUm/${actorName}`, { observe: 'response' })
   }
 }

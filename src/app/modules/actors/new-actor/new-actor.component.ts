@@ -4,6 +4,7 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field"
 import { MatDialogRef } from"@angular/material/dialog"
 import { Subscription } from "rxjs"
 import { Filme } from "./../../../core/models/filme.model"
+import { Ator } from "./../../../core/models/ator.model"
 import { MoviesService } from "./../../../core/services/movies.service"
 import { MyToastrService } from "./../../../core/services/toastr.service"
 import { ActorsService } from "./../../../core/services/actors.service"
@@ -23,6 +24,7 @@ export class NewActorComponent implements OnInit, OnDestroy {
   movieFormGroup: FormGroup
   isNewActor: boolean = false
   filmes: Filme[]
+  atores: Ator[]
   stepActorLabel: String = 'Filme'
   actorFormGroup: FormGroup
 
@@ -56,6 +58,13 @@ export class NewActorComponent implements OnInit, OnDestroy {
     })
   }
 
+  findAllActors(): void {
+    this.httpRequest = this.actorsService.findAllActors().subscribe(response => {
+      this.atores = response.body['atores']
+    }, err => {
+      console.log(err.error['message'])
+    })
+  }
   initializeSelectActorFormGroup(): void {
     this.movieFormGroup = this.builder.group({
       filme: this.builder.control(null, [Validators.required])
@@ -92,7 +101,7 @@ export class NewActorComponent implements OnInit, OnDestroy {
   setDateFormattedOnActorForm(value: string): void{
     if(value){
       let dateFormatted: string = moment.utc(value).local().format('YYYY-MM-DD')
-      this.movieFormGroup.controls['data_nascimento'].setValue(dateFormatted)
+      this.actorFormGroup.controls['data_nascimento'].setValue(dateFormatted)
     }
   } 
 
