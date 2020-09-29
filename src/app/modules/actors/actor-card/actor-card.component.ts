@@ -15,7 +15,7 @@ export class ActorCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sliceSnyposis(value: String): String {
+  sliceBiography(value: String): String {
     return `${value.slice(0, 100)}...`
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from "@angular/router"
-import {Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ActorsService} from "./../../../core/services/actors.service"
 import { Ator } from "./../../../core/models/ator.model"
 

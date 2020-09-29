@@ -6,7 +6,7 @@ export interface Ator {
     imagem?: String,
     idade?: Number,
     biografia: String,
-    data_nascimento: Date,
-    nacionalidade: String,
+    data_nascimento?: Date,
+    nacionalidade?: String,
     filmes: Filme[]
 }
