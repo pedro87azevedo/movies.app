@@ -26,7 +26,7 @@ export class MoviesService {
   validatorUniqueMovieName(movieName: string){
     let myParams = new HttpParams()
     myParams = myParams.append('nome', movieName)
-    return this.http.get<any>(`${API_URL}/filme/validarNomeFilme`, {params: myParams})
+    return this.http.get<any>(`${API_URL}/filmes/validarNomeFilme`, {params: myParams})
   }
 
 }
